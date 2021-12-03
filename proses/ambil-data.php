@@ -39,16 +39,13 @@ if(isset($_POST['maskapai']) ){
 if(isset($_POST['simpan'])){
     
     $id = $_POST['id'];
-    $nama = $_POST['nama'];
-    $alamat = $_POST['alamat'];
-    $no_tlp = $_POST['no_tlp'];
     $id_tiket = $_POST['id_tiket'];
     $id_bayar = $_POST['id_bayar'];
     $tanggal = $_POST['tanggal'];
     $jumlah = $_POST['jumlah'];
     $total = $_POST['total'];
 
-    $sql = mysqli_query($con, "INSERT INTO pembelian (id_login,nama,alamat,no_tlp,id_tiket,id_bayar,tanggal,jumlah,total) VALUES ('$id','$nama','$alamat','$no_tlp','$id_tiket','$id_bayar','$tanggal','$jumlah','$total')");
+    $sql = mysqli_query($con, "INSERT INTO pembelian (id_login,id_tiket,id_bayar,tanggal,jumlah,total) VALUES ('$id','$id_tiket','$id_bayar','$tanggal','$jumlah','$total')");
     // print_r($sql);
     echo "<script>alert('Pesan Tiket Berhasil!');
         window.location='../index_cust.php?p=rp';</script>";

@@ -38,7 +38,7 @@
                 <?php
                 $no=1;
                 $id = $_SESSION['id'];
-                $sql = mysqli_query($con, "SELECT * FROM pembelian INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan WHERE id_login='$id'");
+                $sql = mysqli_query($con, "SELECT * FROM pembelian INNER JOIN login ON login.id=pembelian.id_login INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan WHERE id_login='$id'");
                 while($data=mysqli_fetch_array($sql)){
                 ?>
                 <tr>
@@ -53,7 +53,7 @@
                     <td><?= $data['tanggal'];?></td>
                     <td><?= $data['jumlah'];?></td>
                     <td><?= $data['total'];?></td>
-                    <td><a href="pages/cetak-rp.php?id=<?= $data['id_login']?>.php" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-print"></i> </a></td>
+                    <td><a href="pages/cetak-rp.php?id=<?= $data['id_tiket']?>.php" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-print"></i> </a></td>
                     
                 </tr>
                 <?php

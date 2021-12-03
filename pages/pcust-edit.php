@@ -1,13 +1,12 @@
 <?php
-$id = $_SESSION['user'];
-$sql = mysqli_query($con, "SELECT * FROM login WHERE username='$id'");
+$id = $_SESSION['id'];
+$sql = mysqli_query($con, "SELECT * FROM login WHERE id='$id'");
 $data = mysqli_fetch_array($sql);
 ?>
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -24,6 +23,12 @@ $data = mysqli_fetch_array($sql);
                     </div>
                     <form class="form-horizontal" action="proses/pcust-edit-proses.php" method="post">
                         <div class="box-body">
+                        <div class="form-group">
+                                
+                                <div class="col-sm-9">
+                                <input readonly=""  name="id" type="hidden" class="form-control"  id="" value="<?= $_SESSION['id']?>">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">User</label>
                                 <div class="col-sm-9">

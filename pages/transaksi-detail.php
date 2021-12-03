@@ -39,7 +39,7 @@
                 <tbody>
                 <?php
                 $no=1;
-                $sql = mysqli_query($con, "SELECT * FROM pembelian INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan");
+                $sql = mysqli_query($con, "SELECT * FROM pembelian  INNER JOIN login ON login.id=pembelian.id_login INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan");
                 while($data=mysqli_fetch_array($sql)){
                 ?>
                 <tr>

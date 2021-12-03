@@ -48,12 +48,12 @@ if($_SESSION['level']==""){
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <!-- <li>
+        <li>
           <a href="index_cust.php?p=pcust">
             <i class="fa fa-user"></i>
             <span>Profile</span>
           </a>
-        <li> -->
+        <li>
         <li>
           <a href="index_cust.php?p=beli">
             <i class="fa fa-plane"></i> <span>Pesan Tiket</span>

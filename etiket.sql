@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2021 at 12:13 AM
+-- Generation Time: Dec 03, 2021 at 10:33 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -59,21 +59,25 @@ CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `level` int(11) NOT NULL
+  `level` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_tlp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`id`, `username`, `password`, `level`) VALUES
-(1, 'admin', '1234', 1),
-(2, 'reffan', 'reffan', 2),
-(3, 'raska', 'raska', 2),
-(4, 'rino', 'rino', 2),
-(5, 'risky', 'risky', 2),
-(44, 'nisa', 'nisa', 2),
-(45, 'yayah', 'yayah', 2);
+INSERT INTO `login` (`id`, `username`, `password`, `level`, `nama`, `alamat`, `no_tlp`) VALUES
+(1, 'admin', '1234', 1, '', '', ''),
+(2, 'reffan', 'reffan', 2, 'Reffan', 'Ciwidey', '0876542399019'),
+(3, 'raska', 'raska', 2, 'Raska', 'Jakarta', '0887690234576'),
+(4, 'rino', 'rino', 2, 'Rino Nugrahadi', 'Cilegon', '0876234500987'),
+(5, 'risky', 'risky', 2, '', '', ''),
+(44, 'nisa', 'nisa', 2, 'Nisa A', 'Ciwidey\r\n', '087123456788'),
+(45, 'yayah', 'yayah', 2, '', '', ''),
+(46, 'caca', 'caca', 2, 'Caca', 'Andir', '098765423880');
 
 -- --------------------------------------------------------
 
@@ -115,9 +119,6 @@ INSERT INTO `maskapai` (`id_maskapai`, `kd_maskapai`, `nama_maskapai`, `kelas_ma
 CREATE TABLE `pembelian` (
   `id_pembelian` int(11) NOT NULL,
   `id_login` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
-  `no_tlp` varchar(20) NOT NULL,
   `id_tiket` int(11) NOT NULL,
   `id_bayar` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -129,11 +130,14 @@ CREATE TABLE `pembelian` (
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `id_login`, `nama`, `alamat`, `no_tlp`, `id_tiket`, `id_bayar`, `tanggal`, `jumlah`, `total`) VALUES
-(4, 2, 'Reffan', ' Ciwidey', '087612245678', 3, 4, '2021-12-08', 2, 600000),
-(6, 4, 'Rino', ' Cilegon', '08654321789', 3, 2, '2021-12-02', 2, 600000),
-(7, 3, 'Raska', 'Jakarta', '08762345689', 1, 0, '2021-12-08', 1, 700000),
-(9, 44, 'Nisa A', ' Ciwidey', '08764532789', 13, 3, '0000-00-00', 3, 3000000);
+INSERT INTO `pembelian` (`id_pembelian`, `id_login`, `id_tiket`, `id_bayar`, `tanggal`, `jumlah`, `total`) VALUES
+(4, 2, 3, 4, '2021-12-08', 2, 600000),
+(6, 4, 3, 2, '2021-12-02', 2, 600000),
+(7, 3, 1, 0, '2021-12-08', 1, 700000),
+(9, 44, 13, 3, '2021-12-02', 3, 3000000),
+(10, 46, 7, 3, '2021-12-03', 2, 1400000),
+(11, 4, 18, 0, '2021-12-15', 1, 700000),
+(12, 4, 12, 4, '2021-12-22', 2, 1600000);
 
 --
 -- Triggers `pembelian`
@@ -171,18 +175,19 @@ INSERT INTO `tiket` (`id_tiket`, `id_maskapai`, `id_tujuan`, `harga`, `stok`) VA
 (4, '5', 1, 500000, 17),
 (5, '7', 1, 500000, 6),
 (6, '6', 1, 1000000, 9),
-(7, '9', 1, 700000, 26),
+(7, '9', 1, 700000, 24),
 (8, '8', 1, 1200000, 7),
-(12, '4', 2, 800000, 9),
+(12, '4', 2, 800000, 7),
 (13, '5', 2, 1000000, 5),
 (14, '2', 1, 700000, 4),
 (15, '1', 1, 900000, 17),
 (17, '9', 13, 1000000, 6),
-(18, '10', 3, 700000, 11),
+(18, '10', 3, 700000, 10),
 (19, '6', 5, 2000000, 7),
 (20, '13', 6, 2000000, 7),
 (21, '1', 9, 1100000, 10),
-(22, '5', 11, 700000, 3);
+(22, '5', 11, 700000, 3),
+(23, '1', 9, 1000000, 7);
 
 -- --------------------------------------------------------
 
@@ -263,25 +268,25 @@ ALTER TABLE `bayar`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `maskapai`
 --
 ALTER TABLE `maskapai`
-  MODIFY `id_maskapai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_maskapai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tujuan`

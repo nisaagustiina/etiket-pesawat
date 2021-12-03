@@ -33,11 +33,11 @@ include '../koneksi.php';
                             <td> -->
                             <h3 class="card-title">Cetak Kartu Pemesanan Tiket</h3>
                         <?php
-                        $sql = mysqli_query($con, "SELECT * FROM pembelian INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan  WHERE id_login='$id'");
+                        $sql = mysqli_query($con, "SELECT * FROM pembelian INNER JOIN login ON login.id=pembelian.id_login INNER JOIN tiket ON tiket.id_tiket=pembelian.id_tiket INNER JOIN maskapai ON maskapai.id_maskapai=tiket.id_maskapai INNER JOIN tujuan ON tujuan.id_tujuan=tiket.id_tujuan  WHERE id_pembelian='$id'");
                         while($data=mysqli_fetch_array($sql)){
                    
                         
-                            echo '<p>No Pembelian : '. $data['id_tiket'].'</p>
+                            echo '<p>No Pembelian : '. $data['id_pembelian'].'</p>
                             <p>Nama : '.$data['nama'].'</p>
                             <p>Alamat : '. $data['alamat'].'</p>
                             <p>No Telp : '. $data['no_tlp'].'</p>

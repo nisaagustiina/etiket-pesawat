@@ -32,7 +32,7 @@
                                 <input name="id" type="hidden" class="form-control" id="id" value="<?= $_SESSION['id'];?>" readonly>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Nama</label>
                                 <div class="col-sm-9">
                                 <input name="nama" type="text" class="form-control" id="user" >
@@ -49,7 +49,7 @@
                                 <div class="col-sm-9">
                                 <input name="no_tlp" type="text" class="form-control" id="user" >
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="sel1" class="col-sm-3 control-label">Tujuan</label>
                                 <div class="col-sm-9">
